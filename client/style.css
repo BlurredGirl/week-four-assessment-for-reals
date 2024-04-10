@@ -1,0 +1,22 @@
+
+body {
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+}
+
+#guestbook {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: monospace;
+}
+
+h1 {
+    text-align: center;
+    font-weight: bold;
+}
+
+form {
+    margin-bottom: 20px
+}
