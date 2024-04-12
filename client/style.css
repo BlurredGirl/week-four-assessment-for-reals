@@ -50,7 +50,7 @@ form {
   }
   
 
-/* EXTRAS MAYBE - MEDIA QUERIES */
+/* MEDIA QUERIES */
     /* Styles for screens with a width of 600px or less */
 @media screen and (max-width: 600px) {
     body {

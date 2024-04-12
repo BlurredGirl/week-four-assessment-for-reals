@@ -1,4 +1,4 @@
-const messagesList = document.getElementById("messagesList");
+const messagesList = document.getElementById("messages");
 
 // Get messages from the API
 async function getMessages() {
@@ -20,7 +20,7 @@ console.log(messages)
       li.appendChild(p);
 
       // Append the list item to the messages list
-      messagesList.appendChild(li);
+      messages.appendChild(li);
     });
   }
 
