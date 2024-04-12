@@ -3,45 +3,42 @@ import cors from 'cors';
 import Database from 'better-sqlite3';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors());
 
 // Connect to the database
-const db = new Database('./server/guestbook.db', { verbose: console.log });
-
-// Create messages table if it doesn't exist
-db.exec(`CREATE TABLE IF NOT EXISTS messages (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    text TEXT
-)`);
-
-// Seed data
-const initialMessages = [
-    'Hello, welcome to the guestbook!',
-    'Thanks for visiting!',
-    'Feel free to leave your thoughts.'
-];
-
-const insertStatement = db.prepare('INSERT INTO messages (text) VALUES (?)');
-initialMessages.forEach(message => {
-    insertStatement.run(message);
-});
-
-// API routes
-app.get('/api/messages', (req, res) => {
-    const messages = db.prepare('SELECT * FROM messages').all();
-    res.json(messages);
-});
-
-app.post('/api/messages', (req, res) => {
-    const { message } = req.body;
-    db.prepare('INSERT INTO messages (text) VALUES (?)').run(message);
-    res.json({ message: 'Message added successfully' });
-});
+const db = new Database('database.db');
 
 // Start server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(8080, function(){
+	console.log("App is running on 8080");
 });
+
+// GET
+app.get("/", function (request, response) {
+    console.log("/ is called");
+    response.json("This is the get response");
+  });
+
+app.get('/messages', function (request, response) { 
+    const messages = db.prepare('SELECT * FROM messages').all();
+    response.json(messages);
+});
+
+
+// POST
+
+app.post('/messages', (request, response) => {
+    //Take the data from the form (body) 
+const newMessage = request.body;
+console.log(newMessage); // Added console log
+
+
+    // Data goes into the database - change the ? for actual data (related to body)
+    db.prepare(('INSERT INTO messages (name, message) VALUES (name, message)').run); // Reflected structure from seed file
+    response.json({ message: 'Message added successfully' });
+});
+
+
+

@@ -1,15 +1,30 @@
 
-body {
+* body {
     font-family: monospace;
     margin: 0;
     padding: 0;
+    background-image: url("https://images.unsplash.com/photo-1518821703881-9da5a9f42038?")
 }
+
+.header {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    font-size: 18px;
+    background-color: transparent;
+    position: relative;
+    font-family: monospace;
+  }
 
 #guestbook {
     max-width: 600px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px;
     font-family: monospace;
+    color: #ffffff;
+    border: 10px;
+    background-color: rgb(0, 0, 0);
 }
 
 h1 {
@@ -18,5 +33,27 @@ h1 {
 }
 
 form {
-    margin-bottom: 20px
-}
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px;
+    font-family: monospace;
+    color: rgb(255, 255, 255);
+  }
+  
+
+/* EXTRAS MAYBE - MEDIA QUERIES */
+    /* Styles for screens with a width of 600px or less */
+@media screen and (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+  }

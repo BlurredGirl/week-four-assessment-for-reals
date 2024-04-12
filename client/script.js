@@ -1,14 +1,11 @@
 const messagesList = document.getElementById("messagesList");
 
-// Function to fetch messages from the API
-async function fetchMessages() {
-  try {
-    // Fetch messages from the API
-    const response = await fetch("/api/messages");
+// Get messages from the API
+async function getMessages() {
+    const response = await fetch("http://localhost:8080/messages"); // Change to Render SERVER URL before submitting
     const messages = await response.json();
+console.log(messages)
 
-    // Clear the existing messages from the list
-    messagesList.innerHTML = "";
 
     // Iterate through the messages and append them to the list
     messages.forEach(function (message) {
@@ -25,38 +22,45 @@ async function fetchMessages() {
       // Append the list item to the messages list
       messagesList.appendChild(li);
     });
-  } catch (error) {
-    console.error("Error fetching messages:", error);
   }
-}
 
 // Event listener for form submission
 document.getElementById("messageForm").addEventListener("submit", async (event) => {
   event.preventDefault();
 
   // Get the message from the input field
+  const nameInput = document.getElementById("nameInput");
+  console.log({nameInput, messageInput, yourName, message})  // See the input value in the console log (34 and 36 are missing bits)
+  const yourName = nameInput.target.yourName.value; // CHANGED - ADDED .target.yourName
   const messageInput = document.getElementById("messageInput");
-  const message = messageInput.value;
+  const message = messageInput.target.message.value; // CHANGED - ADDED .target.message
 
-  try {
-    // Send the message to the API
-    await fetch("/api/messages", {
+    // Send the message to the API - // replace with Render URL at the end before submission
+    await fetch("http://localhost:8080/messages", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ yourName: nameInput, messageInput: message }), // add more input into curly braces - DONE?
     });
 
     // Clear the input field
     messageInput.value = "";
 
-    // Fetch and display updated messages
-    await fetchMessages();
-  } catch (error) {
-    console.error("Error posting message:", error);
-  }
-});
-
 // Fetch messages when the page loads
 fetchMessages();
+  })
+
+
+
+
+  /// Extras Maybe?
+
+    // Keyboard navigation section
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowLeft') {
+        showPrevImage();
+      } else if (event.key === 'ArrowRight') {
+        showNextImage();
+      }
+    });
