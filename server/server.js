@@ -34,7 +34,6 @@ app.post('/messages', (request, response) => {
 const newMessage = request.body;
 console.log(newMessage); // Added console log
 
-
     // Data goes into the database - change the ? for actual data (related to body)
     db.prepare(('INSERT INTO messages (name, message) VALUES (name, message)').run); // Reflected structure from seed file
     response.json({ message: 'Message added successfully' });

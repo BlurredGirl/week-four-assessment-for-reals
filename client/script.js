@@ -2,7 +2,7 @@ const messagesList = document.getElementById("messagesList");
 
 // Get messages from the API
 async function getMessages() {
-    const response = await fetch("http://localhost:8080/messages"); // Change to Render SERVER URL before submitting
+    const response = await fetch("https://week-four-assessment-for-reals.onrender.com/messages"); // Change to Render SERVER URL before submitting
     const messages = await response.json();
 console.log(messages)
 
@@ -36,7 +36,7 @@ document.getElementById("messageForm").addEventListener("submit", async (event) 
   const message = messageInput.target.message.value; // CHANGED - ADDED .target.message
 
     // Send the message to the API - // replace with Render URL at the end before submission
-    await fetch("http://localhost:8080/messages", {
+    await fetch("https://week-four-assessment-for-reals.onrender.com/messages", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,17 +50,3 @@ document.getElementById("messageForm").addEventListener("submit", async (event) 
 // Fetch messages when the page loads
 fetchMessages();
   })
-
-
-
-
-  /// Extras Maybe?
-
-    // Keyboard navigation section
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'ArrowLeft') {
-        showPrevImage();
-      } else if (event.key === 'ArrowRight') {
-        showNextImage();
-      }
-    });
