@@ -8,7 +8,7 @@ console.log(messages)
 
 
     // Iterate through the messages and append them to the list
-    messagesList.forEach(function (message) {
+    messages.forEach(function (message) {
       // Create elements for message display
       const li = document.createElement("li");
       const p = document.createElement("p");
