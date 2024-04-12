@@ -1,4 +1,4 @@
-const messagesList = document.getElementById("messages");
+const messagesList = document.getElementById("messagesList");
 
 // Get messages from the API
 async function getMessages() {
@@ -8,7 +8,7 @@ console.log(messages)
 
 
     // Iterate through the messages and append them to the list
-    messages.forEach(function (message) {
+    messagesList.forEach(function (message) {
       // Create elements for message display
       const li = document.createElement("li");
       const p = document.createElement("p");
@@ -30,7 +30,7 @@ document.getElementById("messageForm").addEventListener("submit", async (event) 
 
   // Get the message from the input field
   const nameInput = document.getElementById("nameInput");
-  console.log({nameInput, messageInput, yourName, message})  // See the input value in the console log (34 and 36 are missing bits)
+  console.log({nameInput, messageInput, yourName, message}) 
   const yourName = event.target.name.value; // CHANGED - ADDED event.target.yourName
   const messageInput = document.getElementById("messageInput");
   const message = event.target.message.value; // CHANGED - ADDED event.target.message
@@ -44,8 +44,8 @@ document.getElementById("messageForm").addEventListener("submit", async (event) 
       body: JSON.stringify({ name: yourName, message:message}), // add more input into curly braces - DONE?
     });
 
-    // Clear the input field
-    messageInput.value = "";
+    // // Clear the input field
+    // messageInput.value = "";
 
 // Fetch messages when the page loads
 fetchMessages();
