@@ -31,9 +31,9 @@ document.getElementById("messageForm").addEventListener("submit", async (event) 
   // Get the message from the input field
   const nameInput = document.getElementById("nameInput");
   console.log({nameInput, messageInput, yourName, message})  // See the input value in the console log (34 and 36 are missing bits)
-  const yourName = nameInput.target.yourName.value; // CHANGED - ADDED .target.yourName
+  const yourName = event.target.name.value; // CHANGED - ADDED event.target.yourName
   const messageInput = document.getElementById("messageInput");
-  const message = messageInput.target.message.value; // CHANGED - ADDED .target.message
+  const message = event.target.message.value; // CHANGED - ADDED event.target.message
 
     // Send the message to the API - // replace with Render URL at the end before submission
     await fetch("https://week-four-assessment-for-reals.onrender.com/messages", {
@@ -41,7 +41,7 @@ document.getElementById("messageForm").addEventListener("submit", async (event) 
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ yourName: nameInput, messageInput: message }), // add more input into curly braces - DONE?
+      body: JSON.stringify({ name: yourName, message:message}), // add more input into curly braces - DONE?
     });
 
     // Clear the input field
