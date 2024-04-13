@@ -20,7 +20,7 @@ console.log(messages)
       li.appendChild(p);
 
       // Append the list item to the messages list
-      messages.appendChild(li);
+      messagesList.appendChild(li);
     });
   }
 
@@ -48,5 +48,5 @@ document.getElementById("messageForm").addEventListener("submit", async (event) 
     // messageInput.value = "";
 
 // Fetch messages when the page loads
-fetchMessages();
+getMessages();
   })
