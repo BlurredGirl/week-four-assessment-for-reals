@@ -11,17 +11,22 @@ console.log(messages)
     messages.forEach(function (message) {
       // Create elements for message display
       const li = document.createElement("li");
+      const namePara = document.createElement("p"); 
       const p = document.createElement("p");
 
       // Set the text content of the paragraph to the message text
-      p.textContent = message.message;
+      namePara.textContent = message.name; 
+      p.textContent = message.message; 
 console.log(p.textContent);
 
 
       // Append the paragraph to the list item
+      li.appendChild(namePara);
       li.appendChild(p);
+      
 
       // Append the list item to the messages list
+      messagesList.appendChild(li);
       messagesList.appendChild(li);
     });
   }
@@ -46,9 +51,6 @@ document.getElementById("messageForm").addEventListener("submit", async (event) 
       },
       body: JSON.stringify({ name: yourName, message:message}), // add more input into curly braces - DONE?
     });
-
-    // // Clear the input field
-    // messageInput.value = "";
 
 // Fetch messages when the page loads
 getMessages();
