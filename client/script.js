@@ -30,10 +30,11 @@ document.getElementById("messageForm").addEventListener("submit", async (event) 
 
   // Get the message from the input field
   const nameInput = document.getElementById("nameInput");
-  console.log({nameInput, messageInput, yourName, message}) 
   const yourName = event.target.name.value; // CHANGED - ADDED event.target.yourName
   const messageInput = document.getElementById("messageInput");
   const message = event.target.message.value; // CHANGED - ADDED event.target.message
+  console.log({nameInput, messageInput, yourName, message}) 
+
 
     // Send the message to the API - // replace with Render URL at the end before submission
     await fetch("https://week-four-assessment-for-reals.onrender.com/messages", {
