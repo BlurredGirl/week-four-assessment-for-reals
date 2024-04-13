@@ -14,7 +14,9 @@ console.log(messages)
       const p = document.createElement("p");
 
       // Set the text content of the paragraph to the message text
-      p.textContent = message.text;
+      p.textContent = message.message;
+console.log(p.textContent);
+
 
       // Append the paragraph to the list item
       li.appendChild(p);
